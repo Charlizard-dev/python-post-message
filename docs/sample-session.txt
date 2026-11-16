@@ -1,0 +1,89 @@
+$ curl -s localhost:4000/health
+{
+    "status": "ok",
+    "platforms": {
+        "Telegraph": false,
+        "Mastodon": false,
+        "Bluesky": false,
+        "Telegram": false,
+        "Discord": false,
+        "GitHub Gist": false
+    }
+}
+
+$ curl -s -X POST localhost:4000/posting -H "Content-Type: application/json" -d '{"message":"Check out our latest business platform and grow your online visibility. https://example.com"}'
+{
+    "success": false,
+    "summary": {
+        "total": 6,
+        "succeeded": 0,
+        "failed": 6
+    },
+    "results": [
+        {
+            "platform": "Telegraph",
+            "status": "failed",
+            "posted_url": null,
+            "public_access": false,
+            "date": null,
+            "time": null,
+            "error": "Platform not configured. Set: TELEGRAPH_ENABLED=true"
+        },
+        {
+            "platform": "Mastodon",
+            "status": "failed",
+            "posted_url": null,
+            "public_access": false,
+            "date": null,
+            "time": null,
+            "error": "Platform not configured. Set: MASTODON_ACCESS_TOKEN"
+        },
+        {
+            "platform": "Bluesky",
+            "status": "failed",
+            "posted_url": null,
+            "public_access": false,
+            "date": null,
+            "time": null,
+            "error": "Platform not configured. Set: BLUESKY_HANDLE, BLUESKY_APP_PASSWORD"
+        },
+        {
+            "platform": "Telegram",
+            "status": "failed",
+            "posted_url": null,
+            "public_access": false,
+            "date": null,
+            "time": null,
+            "error": "Platform not configured. Set: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID"
+        },
+        {
+            "platform": "Discord",
+            "status": "failed",
+            "posted_url": null,
+            "public_access": false,
+            "date": null,
+            "time": null,
+            "error": "Platform not configured. Set: DISCORD_WEBHOOK_URL"
+        },
+        {
+            "platform": "GitHub Gist",
+            "status": "failed",
+            "posted_url": null,
+            "public_access": false,
+            "date": null,
+            "time": null,
+            "error": "Platform not configured. Set: GITHUB_TOKEN"
+        }
+    ]
+}
+
+$ curl -s -X POST localhost:4000/posting -H "Content-Type: application/json" -d '{"message":"Two links https://a.com and https://b.com"}'
+{"success":false,"error":"Validation failed","details":[{"field":"message","message":"Message must include exactly one CTA link; found 2: https://a.com, https://b.com."}]}
+HTTP 422
+
+$ curl -s -X POST localhost:4000/posting -H "Content-Type: application/json" -d '{"message":"No link here"}'
+{"success":false,"error":"Validation failed","details":[{"field":"message","message":"Message must include exactly one CTA link; none was found."}]}
+HTTP 422
+
+$ docs page
+GET /docs -> HTTP 200

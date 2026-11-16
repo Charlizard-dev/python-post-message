@@ -1,0 +1,21 @@
+INFO:     Started server process [51316]
+INFO:     Waiting for application startup.
+2026-11-16 12:24:54,794 INFO    app: Configured platforms: none
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:4000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:63331 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63333 - "GET /health HTTP/1.1" 200 OK
+2026-11-16 12:24:54,937 INFO    app.services.posting_service: Telegraph: skipped (not configured: TELEGRAPH_ENABLED=true)
+2026-11-16 12:24:54,937 INFO    app.services.posting_service: Mastodon: skipped (not configured: MASTODON_ACCESS_TOKEN)
+2026-11-16 12:24:54,937 INFO    app.services.posting_service: Bluesky: skipped (not configured: BLUESKY_HANDLE, BLUESKY_APP_PASSWORD)
+2026-11-16 12:24:54,937 INFO    app.services.posting_service: Telegram: skipped (not configured: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID)
+2026-11-16 12:24:54,937 INFO    app.services.posting_service: Discord: skipped (not configured: DISCORD_WEBHOOK_URL)
+2026-11-16 12:24:54,937 INFO    app.services.posting_service: GitHub Gist: skipped (not configured: GITHUB_TOKEN)
+INFO:     127.0.0.1:63335 - "POST /posting HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63337 - "POST /posting HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63339 - "POST /posting HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:63341 - "GET /docs HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [51316]
